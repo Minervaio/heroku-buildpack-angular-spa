@@ -116,7 +116,7 @@ elif test -d $cache_dir/bower_components; then
 fi
 
 status "Installing bower which is required by other dependencies"
-npm install bower --userconfig $build_dir/.npmrc 2>&1 | indent
+npm install bower --quiet --userconfig $build_dir/.npmrc 2>&1 | indent
 PATH=$build_dir/node_modules/bower/bin:$PATH
 
 status "Installing dependencies"
@@ -154,7 +154,7 @@ status "Cleaning up node-gyp and npm artifacts"
 rm -rf "$build_dir/.node-gyp"
 rm -rf "$build_dir/.npm"
 
-bower install | indent
+bower install --quiet | indent
 
 # If app has a bower_components directory, cache it.
 if test -d $build_dir/bower_components; then
